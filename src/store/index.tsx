@@ -85,7 +85,7 @@ export const createAppStore = (
                 if (response.ok) {
                     const res = await response.json()
                     const { id, login, jwt } = res
-                    setCookie("token", jwt)
+                    setCookie("token", jwt, { httpOnly: true })
                     localStorage.setItem("login", login)
                     set({ userData: { id, answers: [], login }, error: null, isLoading: false })
                 } else {
